@@ -3,14 +3,14 @@ version: "3.9"
 services:
   db:
     image: postgres:17
-    container_name: areal_hr_db
+    container_name: container_db
     restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: 888888
-      POSTGRES_DB: hr
+      POSTGRES_DB: test_db
     ports:
-      - "6000:6000"
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -31,8 +31,7 @@ services:
       dockerfile: ../containers/app/Dockerfile
     ports:
       - "8080:8080"
-    env_file:
-      - .env
+
     depends_on:
       - api
 

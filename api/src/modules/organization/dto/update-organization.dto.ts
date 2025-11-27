@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateOrganizationDto } from './create-organization.dto';
+import Joi from 'joi';
 
-export class UpdateOrganizationDto extends PartialType(CreateOrganizationDto) {}
+export const updateOrganizationSchema = Joi.object({
+    name: Joi.string().max(255).optional(),
+    comment: Joi.string().optional().allow('', null)
+});
